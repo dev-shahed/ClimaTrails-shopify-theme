@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "banner": {
+            "type": "banner",
+            "settings": {}
+        },
+        "announcement-bar": {
+            "type": "announcement-bar",
+            "settings": {}
+        }
+    },
+    "order": [
+        "banner", "announcement-bar"
+    ]
+
+}
