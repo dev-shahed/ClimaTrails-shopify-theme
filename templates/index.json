@@ -1,16 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "banner": {
-            "type": "banner",
-            "settings": {}
-        },
-        "announcement-bar": {
-            "type": "announcement-bar",
-            "settings": {}
-        }
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_title": "GeneriCon 2023",
+        "announcement_text": "Join us in Denver from June 7 – 9 to see what’s coming next.",
+        "announcement_link": "shopify://collections/all",
+        "announcement_button_text": "Register now"
+      }
     },
-    "order": [
-        "banner", "announcement-bar"
-    ]
-
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify://shop_images/shopify-logo-svgrepo-com.svg"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

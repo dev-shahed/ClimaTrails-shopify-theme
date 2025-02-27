@@ -1,0 +1,84 @@
+{% assign menu = linklists['main-menu'] %}
+
+{% if menu.links %}
+  <!-- Desktop Navigation -->
+  <nav class="hidden lg:ml-8 lg:block lg:self-stretch">
+    <div class="flex items-center h-full space-x-8">
+      {% for link in menu.links %}
+        <div class="relative group">
+          <a
+            href="{{ link.url }}"
+            class="text-gray-700 hover:text-gray-800 relative z-10 flex items-center text-sm font-medium"
+          >
+            {{ link.title }}
+            {% if link.links.size > 0 %}
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            {% endif %}
+          </a>
+
+          {% if link.links.size > 0 %}
+            <div class="absolute left-0 top-full bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out rounded-md">
+              <div class="py-2 px-4">
+                {% for sublink in link.links %}
+                  <a href="{{ sublink.url }}" class="block py-2 text-gray-700 hover:text-gray-800">
+                    {{ sublink.title }}
+                  </a>
+                  {% if sublink.links.size > 0 %}
+                    <p id="women-clothing-heading-mobile" class="font-medium text-gray-900">Clothing</p>
+                    <div class="ml-4">
+                      <div class="ml-4">
+                        {% for subsublink in sublink.links %}
+                          <a href="{{ subsublink.url }}" class="block py-2 text-gray-700 hover:text-gray-800">
+                            {{ subsublink.title }}
+                          </a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+
+  <nav id="mobile-menu" class="lg:hidden bg-white shadow-md p-4 rounded-lg w-full absolute top-full left-0 z-50 hidden">
+    <ul class="space-y-2">
+      {% for link in menu.links %}
+        <li class="border-b last:border-none">
+          <button class="flex justify-between items-center w-full py-3 px-4 text-gray-800 font-medium text-lg focus:outline-none submenu-toggle">
+            {{ link.title }}
+            {% if link.links.size > 0 %}
+              <svg
+                class="h-5 w-5 text-gray-500 transition-transform duration-200 transform rotate-0 submenu-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            {% endif %}
+          </button>
+
+          {% if link.links.size > 0 %}
+            <ul class="ml-4 hidden bg-gray-100 rounded-md shadow-md p-2">
+              {% for sublink in link.links %}
+                <li>
+                  <a href="{{ sublink.url }}" class="block py-2 px-4 text-gray-700 hover:text-gray-800 rounded-md">
+                    {{ sublink.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
