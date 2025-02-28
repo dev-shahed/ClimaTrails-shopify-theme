@@ -24,10 +24,27 @@
       "settings": {
         "logo": "shopify://shop_images/shopify-logo-svgrepo-com.svg"
       }
+    },
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "title": "Summer styles are finally here",
+        "subtitle": "This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care if you live or die.",
+        "images_1": "shopify://shop_images/fieldreport_vol2_back_c08e5a7a-d499-489a-8862-74a7d16c8a1c.jpg",
+        "images_2": "shopify://shop_images/Julie38_SiteSquare.jpg",
+        "images_3": "shopify://shop_images/Julie2_SiteSquare_24dea6ec-2332-48a5-9c81-e61b680e1d9b.jpg",
+        "images_4": "shopify://shop_images/product_lifestyle-28.jpg",
+        "images_5": "shopify://shop_images/product_lifestyle-27.jpg",
+        "images_6": "shopify://shop_images/DaveChristine65_SiteSquare.jpg",
+        "images_7": "shopify://shop_images/product_lifestyle-58.jpg",
+        "button_link": "shopify://collections/all",
+        "button_text": "Shop Now"
+      }
+    },
+    "product-categories": {
+      "type": "product-categories"
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+
+  "order": ["announcement-bar", "header", "hero-banner", "product-categories"]
 }

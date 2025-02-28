@@ -1,0 +1,72 @@
+{% if section.settings.show_category_product %}
+  <section aria-labelledby="category-heading" class="bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="sm:flex sm:items-baseline sm:justify-between">
+        <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
+        <a
+          href="{{ routes.collections_url }}"
+          class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
+        >
+          Browse all categories
+          <span aria-hidden="true"> &rarr;</span>
+        </a>
+      </div>
+      {% assign first_three_categories = collections | sort: 'title' %}
+
+      <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
+        {% for collection in first_three_categories limit: 3 %}
+          <div
+            class="
+              group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg
+              {% if forloop.first %}
+                sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 relative
+              {% else %}
+                sm:aspect-none sm:relative sm:h-full
+              {% endif %}
+            "
+          >
+            <img
+              src="{% if collection.featured_image %}{{ collection.featured_image | img_url: 'master' }}{% else %}https://tailwindui.com/img/ecommerce-images/home-page-03-category-0{{ forloop.index }}.jpg{% endif %}"
+              alt="{{ collection.title | escape }}"
+              class="
+                object-cover object-center
+                {% unless forloop.first %} sm:absolute sm:inset-0 sm:h-full sm:w-full {% endunless %}
+              "
+              width="auto"
+              height="auto"
+            >
+            <div
+              aria-hidden="true"
+              class="
+                bg-gradient-to-b from-transparent to-black opacity-50
+                {% unless forloop.first %} sm:absolute sm:inset-0 {% endunless %}
+              "
+            ></div>
+            <!-- Always visible title and "Shop now" button, left-aligned -->
+            <div class="absolute inset-0 flex items-end p-6 left-0">
+              <div class="text-left">
+                <h3 class="font-extrabold text-white">
+                  <a href="{{ collection.url }}">
+                    <span class="absolute inset-0"></span>
+                    {{ collection.title }}
+                  </a>
+                </h3>
+                <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="mt-6 sm:hidden">
+        <a
+          href="{{ routes.collections_url }}"
+          class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
+        >
+          Browse all categories
+          <span aria-hidden="true"> &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+{% endif %}

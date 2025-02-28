@@ -1,0 +1,75 @@
+<header class="hero-banner relative overflow-hidden">{% render 'hero-banner' %}</header>
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "hero-banner",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Your Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Your subtitle goes here."
+    },
+    {
+      "type": "image_picker",
+      "id": "images_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "images_7",
+      "label": "Image 7"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "/all/products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

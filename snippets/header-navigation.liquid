@@ -19,22 +19,21 @@
           </a>
 
           {% if link.links.size > 0 %}
-            <div class="absolute left-0 top-full bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out rounded-md">
-              <div class="py-2 px-4">
+            <div class="absolute left-0 top-full bg-white shadow-lg opacity-0 scale-95 transform invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible transition-all duration-200 ease-out rounded-md z-50">
+              <div class="py-2 px-6">
                 {% for sublink in link.links %}
                   <a href="{{ sublink.url }}" class="block py-2 text-gray-700 hover:text-gray-800">
                     {{ sublink.title }}
                   </a>
+
                   {% if sublink.links.size > 0 %}
-                    <p id="women-clothing-heading-mobile" class="font-medium text-gray-900">Clothing</p>
+                    <p class="font-medium text-gray-900 mt-2">Clothing</p>
                     <div class="ml-4">
-                      <div class="ml-4">
-                        {% for subsublink in sublink.links %}
-                          <a href="{{ subsublink.url }}" class="block py-2 text-gray-700 hover:text-gray-800">
-                            {{ subsublink.title }}
-                          </a>
-                        {% endfor %}
-                      </div>
+                      {% for subsublink in sublink.links %}
+                        <a href="{{ subsublink.url }}" class="block py-2 text-gray-700 hover:text-gray-800">
+                          {{ subsublink.title }}
+                        </a>
+                      {% endfor %}
                     </div>
                   {% endif %}
                 {% endfor %}
