@@ -42,9 +42,103 @@
       }
     },
     "product-categories": {
-      "type": "product-categories"
-    }
+      "type": "product-categories",
+      "settings": {
+        "show_category_product": true
+      }
+    },
+    "our-story": {
+      "type": "our-story",
+      "settings": {
+        "title": "Our Story",
+        "image": "shopify://shop_images/roman-melnychuk-2-VDljxcfVY-unsplash.jpg",
+        "content": "",
+        "button_link": "shopify://collections/all",
+        "button_text": "Learn More"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {}
+    },
+    "cta-section": {
+      "type": "cta-section",
+      "settings": {
+        "show_cta_section": true,
+        "title": "Final Stock.Up to 50% off.",
+        "button_link": "shopify://collections/all",
+        "button_text": "Shop the sale",
+        "image_1": "shopify://shop_images/product_lifestyle-28.jpg",
+        "image_2": "shopify://shop_images/DaveChristine71_SiteSquare.jpg",
+        "image_3": "shopify://shop_images/Julie38_SiteSquare.jpg",
+        "image_4": "shopify://shop_images/0010untitledAug2014.jpg",
+        "image_5": "shopify://shop_images/product_lifestyle-2_47ab1045-a452-44fd-878d-0861f1d1e076.jpg",
+        "image_6": "shopify://shop_images/0010untitledAug2014.jpg"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_pT4wmj": {
+          "type": "link_list",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "link_list_ANrJRW": {
+          "type": "link_list",
+          "settings": {
+            "title": "Comapany",
+            "menu": "comapny-links-menu"
+          }
+        },
+        "link_list_pcar93": {
+          "type": "link_list",
+          "settings": {
+            "title": "Account",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "link_list_aYVfMr": {
+          "type": "link_list",
+          "settings": {
+            "title": "Contact",
+            "menu": "contact-menu"
+          }
+        },
+        "newsletter_bgdFDa": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Sign up for our newsletter",
+            "description": "The latest deals and savings, sent to your inbox weekly.",
+            "placeholder": "Email address",
+            "button_text": "Sign up"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_pT4wmj",
+        "link_list_ANrJRW",
+        "link_list_pcar93",
+        "link_list_aYVfMr",
+        "newsletter_bgdFDa"
+      ],
+      "settings": {
+        "col_num": 5,
+        "show_newsletter": true
+      }
+    },
+   
   },
-
-  "order": ["announcement-bar", "header", "hero-banner", "product-categories"]
+  "order": [
+    "announcement-bar",
+    "header",
+    "hero-banner",
+    "product-categories",
+    "our-story",
+    "featured-products",
+    "cta-section",
+    "footer",
+  ]
 }

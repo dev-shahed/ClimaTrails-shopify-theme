@@ -3,7 +3,9 @@
   <head>
     {{ content_for_header }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
   </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
     <main id="main" role="main">
       {{ content_for_layout }}

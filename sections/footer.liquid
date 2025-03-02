@@ -1,0 +1,80 @@
+<section class="footer">{% render 'footer' %}</section>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "range",
+      "id": "col_num",
+      "default": 5,
+      "min": 2,
+      "max": 5,
+      "label": "Number of Columns"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "Your Company, Inc. All Rights Reserved."
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Navigation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sign up for our newsletter"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "The latest deals and savings, sent to your inbox weekly."
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Email Placeholder",
+          "default": "Email address"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Sign up"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
