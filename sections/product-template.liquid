@@ -15,57 +15,7 @@
         <p class="text-xl font-medium text-gray-900">{{ product.price | money }}</p>
       </div>
       <!-- Reviews -->
-      <div class="mt-4">
-        <h2 class="sr-only">Reviews</h2>
-        <div class="flex items-center">
-          <p class="text-sm text-gray-700">
-            3.9
-            <span class="sr-only"> out of 5 stars</span>
-          </p>
-          <div class="ml-1 flex items-center">
-            <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-            <svg
-              class="text-yellow-400 h-5 w-5 flex-shrink-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-            </svg>
-            <svg
-              class="text-yellow-400 h-5 w-5 flex-shrink-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-            </svg>
-            <svg
-              class="text-yellow-400 h-5 w-5 flex-shrink-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-            </svg>
-            <svg
-              class="text-yellow-400 h-5 w-5 flex-shrink-0"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-            </svg>
-            <svg class="text-gray-200 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div aria-hidden="true" class="ml-4 text-sm text-gray-300">·</div>
-          <div class="ml-4 flex">
-            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">See all 512 reviews</a>
-          </div>
-        </div>
-      </div>
+      {% render 'product-reviews' %}
     </div>
 
     <!-- Image gallery -->
@@ -93,123 +43,14 @@
     </div>
 
     <div class="mt-8 lg:col-span-5">
-      <form>
-        {% if product.variants.size > 0 %}
-          <!-- Color picker -->
+      <form id="product-form" method="post" action="/cart/add" id="AddToCartForm">
+        {% render 'product-variants', product: product %}
 
-          {% for attribute in product.options %}
-            {% if attribute == 'Color' %}
-              {% assign color_index = forloop.index %}
-              {%- comment -%} Get the index of 'Color' {%- endcomment -%}
-              {% assign unique_colors = '' %}
-              {%- comment -%} Store unique colors {%- endcomment -%}
-
-              <div>
-                <h2 class="text-sm font-medium text-gray-900">Color</h2>
-                <fieldset aria-label="Choose a color" class="mt-2">
-                  <div class="flex items-center space-x-3">
-                    {% for variant in product.variants %}
-                      {% assign color_value = '' %}
-                      {% if color_index == 1 %}
-                        {% assign color_value = variant.option1 %}
-                      {% elsif color_index == 2 %}
-                        {% assign color_value = variant.option2 %}
-                      {% elsif color_index == 3 %}
-                        {% assign color_value = variant.option3 %}
-                      {% endif %}
-
-                      {% if color_value and unique_colors contains color_value %}
-                        {% continue %}
-                        {%- comment -%} Skip duplicate colors {%- endcomment -%}
-                      {% endif %}
-
-                      {% assign unique_colors = unique_colors | append: ',' | append: color_value %}
-
-                      {% if color_value %}
-                        <label
-                          aria-label="{{ color_value }}"
-                          class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900"
-                        >
-                          <input type="radio" name="color-choice" value="{{ color_value }}" class="sr-only">
-                          <span
-                            aria-hidden="true"
-                            class="h-8 w-8 rounded-full border border-black border-opacity-10 {% unless color_value == 'Harvest' %} bg-{{ color_value | downcase }} {% else %} bg-[#b9a48a] {% endunless %}"
-                          ></span>
-                        </label>
-                      {% endif %}
-                    {% endfor %}
-                  </div>
-                </fieldset>
-              </div>
-            {% endif %}
-          {% endfor %}
-
-          <!-- Size picker -->
-          {% for attribute in product.options %}
-            {% if attribute == 'Size' %}
-              {% assign size_index = forloop.index %}
-              {%- comment -%} Get the index of 'Size' {%- endcomment -%}
-              {% assign unique_sizes = '' %}
-              {%- comment -%} Store unique sizes {%- endcomment -%}
-
-              <div class="mt-8">
-                <div class="flex items-center justify-between">
-                  <h2 class="text-sm font-medium text-gray-900">Size</h2>
-                  <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">See sizing chart</a>
-                </div>
-
-                <fieldset aria-label="Choose a size" class="mt-2">
-                  <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                    {% for variant in product.variants %}
-                      {% assign size_value = '' %}
-                      {% if size_index == 1 %}
-                        {% assign size_value = variant.option1 %}
-                      {% elsif size_index == 2 %}
-                        {% assign size_value = variant.option2 %}
-                      {% elsif size_index == 3 %}
-                        {% assign size_value = variant.option3 %}
-                      {% endif %}
-
-                      {% if size_value and unique_sizes contains size_value %}
-                        {% continue %}
-                        {%- comment -%} Skip duplicate sizes {%- endcomment -%}
-                      {% endif %}
-
-                      {% assign unique_sizes = unique_sizes | append: ',' | append: size_value %}
-
-                      {% if size_value %}
-                        <label
-                          class="
-                            flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none
-                            {% if variant.available %}cursor-pointer{% else %}opacity-25 cursor-not-allowed{% endif %}
-                            {% if variant == product.selected_or_first_available_variant %}ring-2 ring-indigo-500 ring-offset-2{% endif %}
-                          "
-                        >
-                          <input
-                            type="radio"
-                            name="size-choice"
-                            value="{{ size_value }}"
-                            class="sr-only"
-                            {% if variant.available == false %}
-                              disabled
-                            {% endif %}
-                          >
-                          <span class="{% if variant.available == false %}text-gray-400{% else %}text-gray-900{% endif %}">
-                            {{- size_value -}}
-                          </span>
-                        </label>
-                      {% endif %}
-                    {% endfor %}
-                  </div>
-                </fieldset>
-              </div>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-
+        <input type="hidden" name="id" id="variantId" value="{{ product.selected_or_first_available_variant.id }}">
         <button
+          id="add-to-cart"
           type="submit"
-          class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          class="btn-add-to-cart mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           Add to cart
         </button>
@@ -366,33 +207,39 @@
   </section>
 
   <!-- Related products -->
+  {% assign selected_product = product %}
+  {% assign tag = selected_product.tags | first %}
   <section aria-labelledby="related-heading" class="mt-16 sm:mt-24">
     <h2 id="related-heading" class="text-lg font-medium text-gray-900">Customers also purchased</h2>
-
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      <div class="group relative">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
-          <img
-            src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg"
-            alt="Front of men&#039;s Basic Tee in white."
-            class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-          >
-        </div>
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-700">
-              <a href="#">
-                <span aria-hidden="true" class="absolute inset-0"></span>
-                Basic Tee
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">Aspen White</p>
+      {% for product in collections.all.products %}
+        {% if product.tags contains tag and product.id != selected_product.id %}
+          <div class="group relative">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img
+                src="{{ product.featured_image | img_url: 'medium' }}"
+                alt="{{ product.title }}"
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                loading="lazy"
+                width="300"
+                height="300"
+              >
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="{{ product.url }}">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    {{ product.title }}
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">{{ product.variants.first.option1 }}</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">{{ product.price | money }}</p>
+            </div>
           </div>
-          <p class="text-sm font-medium text-gray-900">$35</p>
-        </div>
-      </div>
-
-      <!-- More products... -->
+        {% endif %}
+      {% endfor %}
     </div>
   </section>
 </main>

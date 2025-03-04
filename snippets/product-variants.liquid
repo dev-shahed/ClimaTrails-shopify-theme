@@ -1,0 +1,104 @@
+{% if product.variants.size > 0 %}
+  <!-- Color picker -->
+  {% for attribute in product.options %}
+    {% if attribute == 'Color' %}
+      {% assign color_index = forloop.index0 %}
+      {%- comment -%} Get the index of 'Color' {%- endcomment -%}
+      {% assign unique_colors = '' %}
+      {%- comment -%} Store unique colors {%- endcomment -%}
+      <div>
+        <h2 class="text-sm font-medium text-gray-900">Color</h2>
+        <fieldset aria-label="Choose a color" class="mt-2">
+          <div class="flex items-center space-x-3">
+            {% for variant in product.variants %}
+              {% assign color_value = variant.options[color_index] %}
+              {% if color_value and unique_colors contains color_value %}
+                {% continue %}
+                {%- comment -%} Skip duplicate colors {%- endcomment -%}
+              {% endif %}
+
+              {% assign unique_colors = unique_colors | append: ',' | append: color_value %}
+              {% if color_value %}
+                <label
+                  aria-label="{{ color_value }}"
+                  class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900"
+                >
+                  <input
+                    type="radio"
+                    name="color-choice"
+                    value="{{ color_value }}"
+                    class="sr-only"
+                    data-variant-id="{{ variant.id }}"
+                    {% if variant == product.selected_or_first_available_variant %}
+                      checked
+                    {% endif %}
+                  >
+                  <span
+                    aria-hidden="true"
+                    class="h-8 w-8 rounded-full border border-black border-opacity-10  bg-{{ color_value | downcase }}   {% if variant.available %}cursor-pointer{% else %}opacity-25 cursor-not-allowed{% endif %}"
+                  ></span>
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  <!-- Size picker -->
+  {% for attribute in product.options %}
+    {% if attribute == 'Size' %}
+      {% assign size_index = forloop.index0 %}
+      {%- comment -%} Get the index of 'Size' {%- endcomment -%}
+      {% assign unique_sizes = '' %}
+      {%- comment -%} Store unique sizes {%- endcomment -%}
+
+      <div class="mt-8">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-medium text-gray-900">Size</h2>
+          <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">See sizing chart</a>
+        </div>
+
+        <fieldset aria-label="Choose a size" class="mt-2">
+          <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+            {% for variant in product.variants %}
+              {% assign size_value = variant.options[size_index] %}
+              {% if size_value and unique_sizes contains size_value %}
+                {% continue %}
+                {%- comment -%} Skip duplicate sizes {%- endcomment -%}
+              {% endif %}
+              {% assign unique_sizes = unique_sizes | append: ',' | append: size_value %}
+              {% if size_value %}
+                <label
+                  class="
+                    flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none
+                    {% if variant.available %}cursor-pointer{% else %}opacity-25 cursor-not-allowed{% endif %}
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="size-choice"
+                    value="{{ size_value }}"
+                    class="sr-only"
+                    data-variant-id="{{ variant.id }}"
+                    {% if variant.available == false %}
+                      disabled
+                    {% endif %}
+                    data-variant-id="{{ variant.id }}"
+                    {% if variant == product.selected_or_first_available_variant %}
+                      checked
+                    {% endif %}
+                  >
+                  <span class="{% if variant.available == false %}text-gray-400{% else %}text-gray-900{% endif %}">
+                    {{- size_value -}}
+                  </span>
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}

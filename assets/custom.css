@@ -2,3 +2,23 @@
   --tw-bg-opacity: 1;
   background-color: #b9a48a;
 }
+
+.bg-khaki {
+  --tw-bg-opacity: 1;
+  background-color: #c3b299;
+}
+
+.bg-navy {
+  --tw-bg-opacity: 1;
+  background-color: #000080;
+}
+
+.bg-moss {
+  --tw-bg-opacity: 1;
+  background-color: #8a9a5b;
+}
+
+.bg-nutmeg {
+  --tw-bg-opacity: 1;
+  background-color: #7c5a2c;
+}
