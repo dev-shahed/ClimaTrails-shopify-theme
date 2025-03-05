@@ -43,10 +43,13 @@
     </div>
 
     <div class="mt-8 lg:col-span-5">
-      <form id="product-form" method="post" action="/cart/add" id="AddToCartForm">
-        {% render 'product-variants', product: product %}
-
+      {% form 'product', product, class: 'product-form', id: 'AddToCartForm' %}
+        <!-- Hidden input for variant ID -->
         <input type="hidden" name="id" id="variantId" value="{{ product.selected_or_first_available_variant.id }}">
+        {% unless product.has_only_default_variant %}
+          {% render 'product-variants' %}
+        {% endunless %}
+        <!-- Add to cart button -->
         <button
           id="add-to-cart"
           type="submit"
@@ -54,7 +57,20 @@
         >
           Add to cart
         </button>
-      </form>
+
+        <!-- JSON data for all variants -->
+        <script type="application/json" data-variants>
+          [
+            {% for variant in product.variants %}
+              {
+                "id": {{ variant.id }},
+                "options": {{ variant.options | json }},
+                "available": {{ variant.available | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        </script>
+      {% endform %}
 
       <!-- Product details -->
       <div class="mt-10">
@@ -209,39 +225,9 @@
   <!-- Related products -->
   {% assign selected_product = product %}
   {% assign tag = selected_product.tags | first %}
-  <section aria-labelledby="related-heading" class="mt-16 sm:mt-24">
-    <h2 id="related-heading" class="text-lg font-medium text-gray-900">Customers also purchased</h2>
-    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      {% for product in collections.all.products %}
-        {% if product.tags contains tag and product.id != selected_product.id %}
-          <div class="group relative">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
-              <img
-                src="{{ product.featured_image | img_url: 'medium' }}"
-                alt="{{ product.title }}"
-                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                loading="lazy"
-                width="300"
-                height="300"
-              >
-            </div>
-            <div class="mt-4 flex justify-between">
-              <div>
-                <h3 class="text-sm text-gray-700">
-                  <a href="{{ product.url }}">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    {{ product.title }}
-                  </a>
-                </h3>
-                <p class="mt-1 text-sm text-gray-500">{{ product.variants.first.option1 }}</p>
-              </div>
-              <p class="text-sm font-medium text-gray-900">{{ product.price | money }}</p>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
+  {% if tag.size > 0 %}
+    {% render 'related-products', selected_product: selected_product, tag: tag, heading: 'Related products' %}
+  {% endif %}
 </main>
 
 {% schema %}

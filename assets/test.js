@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const colorRadios = document.querySelectorAll('.color-radio');
   const sizeRadios = document.querySelectorAll('.size-radio');
+  const sizePicker = document.getElementById('size-picker');
   const variantIdInput = document.getElementById('variantId');
   const variants = JSON.parse(document.querySelector('[data-variants]').textContent);
 
@@ -38,14 +39,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Function to highlight the selected option
-  function highlightSelectedOption(radios, className) {
-    radios.forEach((radio) => {
-      const label = radio.closest('label');
-      if (radio.checked) {
-        label.classList.add(className); // Add highlight class
+  // Function to filter sizes based on selected color
+  function filterSizesByColor(selectedColor) {
+    const sizeLabels = sizePicker.querySelectorAll('.size-label');
+
+    sizeLabels.forEach((label) => {
+      const sizeColor = label.getAttribute('data-color');
+      const sizeVariantId = label.getAttribute('data-variant-id');
+      const sizeRadio = label.querySelector('.size-radio');
+
+      if (sizeColor === selectedColor) {
+        label.style.display = 'flex'; // Show the size option
+        const variant = variants.find((v) => v.id === parseInt(sizeVariantId));
+        if (variant.available) {
+          sizeRadio.disabled = false;
+          label.classList.remove('opacity-25', 'cursor-not-allowed');
+        } else {
+          sizeRadio.disabled = true;
+          label.classList.add('opacity-25', 'cursor-not-allowed');
+        }
       } else {
-        label.classList.remove(className); // Remove highlight class
+        label.style.display = 'none'; // Hide the size option
       }
     });
   }
@@ -53,21 +67,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // Add event listeners to color radios
   colorRadios.forEach((radio) => {
     radio.addEventListener('change', () => {
-      updateVariantId();
-      highlightSelectedOption(colorRadios, 'selected-color'); // Highlight selected color
+      const selectedColor = radio.value;
+      filterSizesByColor(selectedColor); // Filter sizes based on selected color
+      updateVariantId(); // Update the variant ID
     });
   });
 
   // Add event listeners to size radios
   sizeRadios.forEach((radio) => {
-    radio.addEventListener('change', () => {
-      updateVariantId();
-      highlightSelectedOption(sizeRadios, 'selected-size'); // Highlight selected size
-    });
+    radio.addEventListener('change', updateVariantId);
   });
 
-  // Initialize variant ID and highlight selected options on page load
-  updateVariantId();
-  highlightSelectedOption(colorRadios, 'selected-color');
-  highlightSelectedOption(sizeRadios, 'selected-size');
+  // Initialize on page load
+  const defaultColor = document.querySelector('.color-radio:checked')?.value;
+  if (defaultColor) {
+    filterSizesByColor(defaultColor); // Filter sizes for the default selected color
+  }
+  updateVariantId(); // Update the variant ID
 });

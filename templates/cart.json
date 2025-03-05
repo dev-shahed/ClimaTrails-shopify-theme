@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_title": "GeneriCon 2023",
+        "announcement_text": "Join us in Denver from June 7 – 9 to see what’s coming next.",
+        "announcement_link": "shopify://collections/all",
+        "announcement_button_text": "Register now"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify://shop_images/shopify-logo-svgrepo-com.svg"
+      }
+    },
+    "cart-template": {
+      "type": "cart-template"
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_pT4wmj": {
+          "type": "link_list",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "link_list_ANrJRW": {
+          "type": "link_list",
+          "settings": {
+            "title": "Comapany",
+            "menu": "comapny-links-menu"
+          }
+        },
+        "link_list_pcar93": {
+          "type": "link_list",
+          "settings": {
+            "title": "Account",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "link_list_aYVfMr": {
+          "type": "link_list",
+          "settings": {
+            "title": "Contact",
+            "menu": "contact-menu"
+          }
+        },
+        "newsletter_bgdFDa": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Sign up for our newsletter",
+            "description": "The latest deals and savings, sent to your inbox weekly.",
+            "placeholder": "Email address",
+            "button_text": "Sign up"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_pT4wmj",
+        "link_list_ANrJRW",
+        "link_list_pcar93",
+        "link_list_aYVfMr",
+        "newsletter_bgdFDa"
+      ],
+      "settings": {
+        "col_num": 5,
+        "show_newsletter": true
+      }
+    }
+  },
+  "order": ["announcement-bar", "header", "cart-template", "footer"]
+}
