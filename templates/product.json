@@ -1,77 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "settings": {
-        "show_announcement": true,
-        "announcement_title": "GeneriCon 2023",
-        "announcement_text": "Join us in Denver from June 7 – 9 to see what’s coming next.",
-        "announcement_link": "shopify://collections/all",
-        "announcement_button_text": "Register now"
-      }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-        "logo": "shopify://shop_images/shopify-logo-svgrepo-com.svg"
-      }
-    },
-    "product-template": {
-      "type": "product-template"
-    },
-    "footer": {
-      "type": "footer",
+    "main": {
+      "type": "main-product",
       "blocks": {
-        "link_list_pT4wmj": {
-          "type": "link_list",
+        "vendor": {
+          "type": "text",
           "settings": {
-            "title": "Shop",
-            "menu": "footer"
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
           }
         },
-        "link_list_ANrJRW": {
-          "type": "link_list",
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
           "settings": {
-            "title": "Comapany",
-            "menu": "comapny-links-menu"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
-        "link_list_pcar93": {
-          "type": "link_list",
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
           "settings": {
-            "title": "Account",
-            "menu": "customer-account-main-menu"
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
           }
         },
-        "link_list_aYVfMr": {
-          "type": "link_list",
-          "settings": {
-            "title": "Contact",
-            "menu": "contact-menu"
-          }
+        "description": {
+          "type": "description",
+          "settings": {}
         },
-        "newsletter_bgdFDa": {
-          "type": "newsletter",
+        "share": {
+          "type": "share",
           "settings": {
-            "title": "Sign up for our newsletter",
-            "description": "The latest deals and savings, sent to your inbox weekly.",
-            "placeholder": "Email address",
-            "button_text": "Sign up"
+            "share_label": "Share"
           }
         }
       },
       "block_order": [
-        "link_list_pT4wmj",
-        "link_list_ANrJRW",
-        "link_list_pcar93",
-        "link_list_aYVfMr",
-        "newsletter_bgdFDa"
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
       ],
       "settings": {
-        "col_num": 5,
-        "show_newsletter": true
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
       }
     }
   },
-  "order": ["announcement-bar", "header", "product-template", "footer"]
+  "order": [
+    "main",
+    "related-products"
+  ]
 }

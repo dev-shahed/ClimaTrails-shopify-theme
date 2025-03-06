@@ -9,136 +9,76 @@
  */
 {
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "settings": {
-        "show_announcement": true,
-        "announcement_title": "GeneriCon 2023",
-        "announcement_text": "Join us in Denver from June 7 – 9 to see what’s coming next.",
-        "announcement_link": "shopify://collections/all",
-        "announcement_button_text": "Register now"
-      }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-        "logo": "shopify://shop_images/shopify-logo-svgrepo-com.svg"
-      }
-    },
-    "hero-banner": {
-      "type": "hero-banner",
-      "settings": {
-        "title": "Summer styles are finally here",
-        "subtitle": "This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care if you live or die.",
-        "images_1": "shopify://shop_images/fieldreport_vol2_back_c08e5a7a-d499-489a-8862-74a7d16c8a1c.jpg",
-        "images_2": "shopify://shop_images/Julie38_SiteSquare.jpg",
-        "images_3": "shopify://shop_images/Julie2_SiteSquare_24dea6ec-2332-48a5-9c81-e61b680e1d9b.jpg",
-        "images_4": "shopify://shop_images/product_lifestyle-28.jpg",
-        "images_5": "shopify://shop_images/product_lifestyle-27.jpg",
-        "images_6": "shopify://shop_images/DaveChristine65_SiteSquare.jpg",
-        "images_7": "shopify://shop_images/product_lifestyle-58.jpg",
-        "button_link": "shopify://collections/all",
-        "button_text": "Shop Now"
-      }
-    },
-    "product-categories": {
-      "type": "product-categories",
-      "settings": {
-        "show_category_product": true
-      }
-    },
-    "our-story": {
-      "type": "our-story",
-      "settings": {
-        "title": "Our Story",
-        "image": "shopify://shop_images/roman-melnychuk-2-VDljxcfVY-unsplash.jpg",
-        "content": "",
-        "button_link": "shopify://collections/all",
-        "button_text": "Learn More"
-      }
-    },
-    "featured-products": {
-      "type": "featured-products",
-      "settings": {}
-    },
-    "cta-section": {
-      "type": "cta-section",
-      "settings": {
-        "show_cta_section": true,
-        "title": "Final Stock.Up to 50% off.",
-        "button_link": "shopify://collections/all",
-        "button_text": "Shop the sale",
-        "image_1": "shopify://shop_images/product_lifestyle-28.jpg",
-        "image_2": "shopify://shop_images/DaveChristine71_SiteSquare.jpg",
-        "image_3": "shopify://shop_images/Julie38_SiteSquare.jpg",
-        "image_4": "shopify://shop_images/0010untitledAug2014.jpg",
-        "image_5": "shopify://shop_images/product_lifestyle-2_47ab1045-a452-44fd-878d-0861f1d1e076.jpg",
-        "image_6": "shopify://shop_images/0010untitledAug2014.jpg"
-      }
-    },
-    "footer": {
-      "type": "footer",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "link_list_pT4wmj": {
-          "type": "link_list",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "title": "Shop",
-            "menu": "footer"
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "link_list_ANrJRW": {
-          "type": "link_list",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "title": "Comapany",
-            "menu": "comapny-links-menu"
-          }
-        },
-        "link_list_pcar93": {
-          "type": "link_list",
-          "settings": {
-            "title": "Account",
-            "menu": "customer-account-main-menu"
-          }
-        },
-        "link_list_aYVfMr": {
-          "type": "link_list",
-          "settings": {
-            "title": "Contact",
-            "menu": "contact-menu"
-          }
-        },
-        "newsletter_bgdFDa": {
-          "type": "newsletter",
-          "settings": {
-            "title": "Sign up for our newsletter",
-            "description": "The latest deals and savings, sent to your inbox weekly.",
-            "placeholder": "Email address",
-            "button_text": "Sign up"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "link_list_pT4wmj",
-        "link_list_ANrJRW",
-        "link_list_pcar93",
-        "link_list_aYVfMr",
-        "newsletter_bgdFDa"
+        "heading",
+        "button"
       ],
       "settings": {
-        "col_num": 5,
-        "show_newsletter": true
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-   
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    }
   },
   "order": [
-    "announcement-bar",
-    "header",
-    "hero-banner",
-    "product-categories",
-    "our-story",
-    "featured-products",
-    "cta-section",
-    "footer",
+    "image_banner",
+    "featured_collection"
   ]
 }
